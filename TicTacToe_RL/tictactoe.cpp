@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <float.h>
+#include <filesystem>
 TicTacToe::TicTacToe(QWidget *parent) : QMainWindow(parent), playerTurn(true), moveCount(0) {
     centralWidget = new QWidget(this);
     gridLayout = new QGridLayout(centralWidget);
@@ -20,8 +21,8 @@ TicTacToe::TicTacToe(QWidget *parent) : QMainWindow(parent), playerTurn(true), m
     setCentralWidget(centralWidget);
     setWindowTitle("Tic Tac Toe");
     resize(300, 300);
-
-    std::ifstream f("D:\\CS\\Machine Learning\\TicTacToe_RL\\TicTacToe_RL\\Qtable_0.json");
+    std:: cout << std::filesystem::current_path().string();
+    std::ifstream f(std::filesystem::current_path().string() + "\\..\\..\\Qtable_0.json");
     if (!f)
         std::cout << "-1";
     try {
